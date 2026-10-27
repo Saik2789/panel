@@ -42,6 +42,14 @@ return [
             'window' => env('APP_2FA_WINDOW', 4),
             'verify_newer' => true,
         ],
+        'header' => [
+            'enabled' => (bool) env('AUTH_HEADER_ENABLED', env('APP_HEADER_AUTH_ENABLED', env('APP_AUTH_HEADER_ENABLED', false))),
+            'user_header' => env('AUTH_HEADER_USER', env('APP_HEADER_AUTH_USER_HEADER', env('APP_AUTH_HEADER_USER', 'Remote-User'))),
+            'email_header' => env('AUTH_HEADER_EMAIL', env('APP_HEADER_AUTH_EMAIL_HEADER', env('APP_AUTH_HEADER_EMAIL', 'Remote-Email'))),
+            'name_header' => env('AUTH_HEADER_NAME', env('APP_HEADER_AUTH_NAME_HEADER', env('APP_AUTH_HEADER_NAME', 'Remote-Name'))),
+            'create_user' => (bool) env('AUTH_HEADER_CREATE_USER', env('APP_HEADER_AUTH_CREATE_USER', env('APP_AUTH_HEADER_CREATE_USER', true))),
+            'trusted_proxies' => env('AUTH_HEADER_TRUSTED_PROXIES', env('APP_HEADER_AUTH_TRUSTED_PROXIES', env('APP_AUTH_HEADER_TRUSTED_PROXIES'))),
+        ],
     ],
 
     /*

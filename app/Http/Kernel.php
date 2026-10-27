@@ -26,6 +26,7 @@ use Pterodactyl\Http\Middleware\RedirectIfAuthenticated;
 use Illuminate\Auth\Middleware\AuthenticateWithBasicAuth;
 use Pterodactyl\Http\Middleware\Api\AuthenticateIPAccess;
 use Illuminate\Foundation\Http\Middleware\ValidatePostSize;
+use Pterodactyl\Http\Middleware\AuthenticateWithHttpHeader;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Pterodactyl\Http\Middleware\Api\Daemon\DaemonAuthenticate;
 use Pterodactyl\Http\Middleware\Api\Client\RequireClientApiKey;
@@ -66,6 +67,7 @@ class Kernel extends HttpKernel
             VerifyCsrfToken::class,
             SubstituteBindings::class,
             LanguageMiddleware::class,
+            AuthenticateWithHttpHeader::class,
         ],
         'api' => [
             EnsureStatefulRequests::class,
@@ -103,5 +105,6 @@ class Kernel extends HttpKernel
         'bindings' => SubstituteBindings::class,
         'recaptcha' => VerifyReCaptcha::class,
         'node.maintenance' => MaintenanceMiddleware::class,
+        'auth.header' => AuthenticateWithHttpHeader::class,
     ];
 }
